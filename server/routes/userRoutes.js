@@ -1,1 +1,9 @@
-// Defines routes related to user management like /login /sing up and so on
+import express from "express";
+import { userLogin, userSignup } from "../controllers/userController.js";
+const router = express.Router();
+
+router.post("/login", userLogin);
+router.post("/signup", userSignup);
+router.get("/");
+
+export default router;
