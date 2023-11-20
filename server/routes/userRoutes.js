@@ -1,0 +1,1 @@
+// Defines routes related to user management like /login /sing up and so on

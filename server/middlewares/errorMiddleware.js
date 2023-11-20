@@ -1,0 +1,1 @@
+// Global error middle to handle errors
