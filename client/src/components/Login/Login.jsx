@@ -1,25 +1,29 @@
 import React, { useState } from 'react';
 import './Login.css';
 
-function Login({ onLogin }) {
+
+function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState(''); 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onLogin(username, email, password); 
-  };
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleClose = () => {
+  const handleLogin = (event) => {
+    event.preventDefault();
+    setIsLoggedIn(true);
   
   };
 
+  if (isLoggedIn) {
+    return <HomePage />;
+  }
+
   return (
     <div className="login-modal">
-      <div className="overlay" onClick={handleClose}></div>
-      <div className="login-container">    
+      <div className="overlay"></div>
+      <div className="login-container">
         <h2>Login</h2>
-        <form onSubmit={handleSubmit} className="login-form">
+        <form onSubmit={handleLogin} className="login-form">
           <div className="input-group">
             <input
               type="text"
