@@ -1,0 +1,40 @@
+.logout-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #e2d7d7; 
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  height: 500px;
+  width: 90%;
+  max-width: 500px;
+  
+}
+.login-container {
+
+
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  max-width: 500px; 
+  
+}
+
+.logout-container button {
+  background-color: #d9534f; 
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logout-container button:hover {
+  background-color: darken(#d9534f, 10%);
+}
