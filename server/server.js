@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
-// import userRoutes from "./routes/userRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -20,4 +20,4 @@ app.get("/", (req, res) => {
   res.send("Welcome to the server");
 });
 
-// app.use("/", userRoutes);
+app.use("/", userRoutes);
