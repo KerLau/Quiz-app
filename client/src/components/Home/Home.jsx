@@ -2,7 +2,7 @@ import React from "react";
 import "./Home.css";
 import bridge from "/Users/antoniomacek/Desktop/Quiz-app/client/src/assets/Home/bridge.jpg";
 
-const HomePage = () => {
+const Home = () => {
   const handleLoginClick = () => {
     console.log("Login button clicked");
   };
@@ -34,4 +34,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;
