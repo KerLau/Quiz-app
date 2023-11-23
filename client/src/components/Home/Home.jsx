@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.css";
-import bridge from "/Users/antoniomacek/Desktop/Quiz-app/client/src/assets/Home/bridge.jpg";
+import bridge from "../../assets/Home/bridge.jpg";
 
 const Home = () => {
   const handleLoginClick = () => {
