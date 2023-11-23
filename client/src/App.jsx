@@ -1,19 +1,13 @@
-import React from 'react';
-import Login from './components/Login/Login.jsx'; 
+import React from "react";
 import Home from "./components/Home/Home.jsx";
-import './App.css'
+import "./App.css";
 
 function App() {
-  
   return (
     <>
-            <Login/>  
-            <Home />
+      <Home />
     </>
   );
-  };
-
-
-
+}
 
 export default App;

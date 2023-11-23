@@ -1,28 +1,31 @@
-// Login.jsx
-
 import React, { useState } from "react";
-import "./Login.css";
+import "./Register.css";
 
-function Login({ onClose }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+function Register({ onClose }) {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleLogin = (event) => {
+  const handleRegister = (event) => {
     event.preventDefault();
-    onClose(); // Close the modal when login is successful
+    // Add logic to handle registration (send data to the server, etc.)
+    onClose(); // Close the modal after registration
   };
 
   return (
-    <div className="login-modal">
-      <div className="overlay"></div>
-      <div className="login-container">
-        <button className="close-button" onClick={onClose}>
-          {/* Close button */}
-          <span>&times;</span>
-        </button>
-        <h2>Login</h2>
-        <form onSubmit={handleLogin} className="login-form">
+    <div className="register-modal">
+      <div className="register-container">
+        <h2>Sign up</h2>
+        <form onSubmit={handleRegister} className="register-form">
+          <div className="input-group">
+            <input
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
           <div className="input-group">
             <input
               type="email"
@@ -42,8 +45,8 @@ function Login({ onClose }) {
             />
           </div>
           <div className="action-items">
-            <button type="submit" className="login-button">
-              Login
+            <button type="submit" className="register-button">
+              Register
             </button>
             <button type="button" onClick={onClose} className="cancel-button">
               Close
@@ -55,4 +58,4 @@ function Login({ onClose }) {
   );
 }
 
-export default Login;
+export default Register;
