@@ -1,20 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.css";
 import bridge from "../../assets/Home/bridge.jpg";
+import Login from "../Login/Login";
+import Register from "../Register/Register"; // Import the Register component
 
 const Home = () => {
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+
   const handleLoginClick = () => {
-    console.log("Login button clicked");
+    setShowLoginModal(true);
   };
 
-  const handleSigninClick = () => {
-    console.log("Sign in button clicked");
+  const handleRegisterClick = () => {
+    setShowRegisterModal(true);
   };
+
+  const handleLoginModalClose = () => {
+    setShowLoginModal(false);
+  };
+
+  const handleRegisterModalClose = () => {
+    setShowRegisterModal(false);
+  };
+
   return (
     <>
       <div className="rowC">
         <div className="button-container">
-          <button onClick={handleSigninClick}>Sign Up</button>
+          <button onClick={handleRegisterClick}>Sign Up</button>
           <button onClick={handleLoginClick}>Login</button>
         </div>
         <div className="title-section">
@@ -28,8 +42,12 @@ const Home = () => {
             adapts to your progress, making education interactive and fun.
           </p>
         </div>
-        <img className="bridge" src={bridge} />
+        <img className="bridge" src={bridge} alt="Bridge" />
       </div>
+
+      {/* Render the Login and Register modals */}
+      {showLoginModal && <Login onClose={handleLoginModalClose} />}
+      {showRegisterModal && <Register onClose={handleRegisterModalClose} />}
     </>
   );
 };
