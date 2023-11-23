@@ -7,6 +7,7 @@ import Register from "../Register/Register"; // Import the Register component
 const Home = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const [showLogoutModal, setShowLogoutModal] = useState(false)
 
   const handleLoginClick = () => {
     setShowLoginModal(true);
@@ -14,6 +15,13 @@ const Home = () => {
 
   const handleRegisterClick = () => {
     setShowRegisterModal(true);
+  };
+  const handleLogoutClick = () => {
+    setShowLogoutModal(true);
+  };
+
+  const handleLogoutModalClose = () =>{
+    setShowLogoutModal(false);
   };
 
   const handleLoginModalClose = () => {
@@ -30,6 +38,7 @@ const Home = () => {
         <div className="button-container">
           <button onClick={handleRegisterClick}>Sign Up</button>
           <button onClick={handleLoginClick}>Login</button>
+          <button onClick={handleLogoutClick}>Log out</button>
         </div>
         <div className="title-section">
           <h1>Synapster</h1>
