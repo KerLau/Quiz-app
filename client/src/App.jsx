@@ -1,13 +1,26 @@
-import React from "react";
-import Home from "./components/Home/Home.jsx";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./components/Home/Home";
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
+import Navbar from "./components/Navbar/Navbar";
 import "./App.css";
-
 function App() {
+  const [user, setUser] = useState(null);
+  const [authenticated, setAuthenticated] = useState(false);
   return (
-    <>
-      <Home />
-    </>
+    <Router>
+      <Navbar
+        authenticated={authenticated}
+        setAuthenticated={setAuthenticated}
+        setUser={setUser}
+      />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login setAuthenticated={setAuthenticated} setUser={setUser} />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </Router>
   );
 }
-
 export default App;

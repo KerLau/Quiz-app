@@ -1,24 +1,36 @@
-// Login.jsx
-
 import React, { useState } from "react";
 import "./Login.css";
-
-function Login({ onClose }) {
-  const [username, setUsername] = useState("");
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+function Login({ setAuthenticated, setUser }) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-
-  const handleLogin = (event) => {
+  const navigate = useNavigate();
+  const handleLogin = async (event) => {
     event.preventDefault();
-    onClose(); // Close the modal when login is successful
+    try {
+      const userCredentials = {
+        email: email,
+        password: password,
+      };
+      const response = await axios.post(
+        "http://localhost:3000/login",
+        userCredentials
+      );
+      console.log("Authentication successful:", response.data);
+      localStorage.setItem("token", response.data.token);
+      setAuthenticated(true);
+      setUser(response.data.user);
+      navigate('/');
+    } catch (error) {
+      console.error("Authentication failed:", error.message);
+    }
   };
-
   return (
     <div className="login-modal">
       <div className="overlay"></div>
       <div className="login-container">
-        <button className="close-button" onClick={onClose}>
-          {/* Close button */}
+        <button className="close-button" onClick={() => navigate('/')}>
           <span>&times;</span>
         </button>
         <h2>Login</h2>
@@ -42,17 +54,11 @@ function Login({ onClose }) {
             />
           </div>
           <div className="action-items">
-            <button type="submit" className="login-button">
-              Login
-            </button>
-            <button type="button" onClick={onClose} className="cancel-button">
-              Close
-            </button>
+            <button type="submit" className="login-button">Login</button>
           </div>
         </form>
       </div>
     </div>
   );
 }
-
 export default Login;
