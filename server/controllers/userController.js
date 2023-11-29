@@ -9,6 +9,12 @@ const signupHandler = async (req, res, next) => {
   console.log(req.body);
   try {
     const { name, email, password } = req.body;
+    const alreadyRegistered = await User.findOne({ email });
+    if (alreadyRegistered) {
+      const error = new Error("This email is already registered");
+      error.statusCode = 409;
+      throw error;
+    }
     // Check if all fields are filled
     if (!name || !email || !password) {
       return res
@@ -38,10 +44,7 @@ const signupHandler = async (req, res, next) => {
       res.status(201).json({ message: "User created successfully" });
     }
   } catch (error) {
-    if (error.code === 11000) {
-      return res.status(409).json({ message: "Email is already in use" });
-    }
-    console.error("Error in signupHandler:", error);
+    console.log(error);
     next(error);
   }
 };

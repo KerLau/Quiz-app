@@ -1,61 +1,71 @@
 import React, { useState } from "react";
 import "./Register.css";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+function Register() {
+  const [error, setError] = useState('')
+  const navigate = useNavigate();
 
-function Register({ onClose }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleRegister = (event) => {
+  const handleRegister = async (event) => {
     event.preventDefault();
-    // Add logic to handle registration (send data to the server, etc.)
-    onClose(); // Close the modal after registration
-  };
 
+    const user = {
+      name: event.target['name'].value,
+      email: event.target['email'].value,
+      password: event.target['password'].value
+    }
+
+    try {
+      const response = await axios.post('http://localhost:3000/signup', user);
+
+      if (response.data) {
+        console.log("Registration successful:", response.data);
+        navigate('/');
+      }else {
+        console.error('Registration failed:', response.data.message);
+      }
+    } catch (err) {
+      console.error('Registration failed:', err.response.data.message);
+    }
+  };
   return (
     <div className="register-modal">
       <div className="register-container">
+        <button className="close-button" onClick={() => navigate('/')}>
+          <span>&times;</span>
+        </button>
         <h2>Sign up</h2>
         <form onSubmit={handleRegister} className="register-form">
           <div className="input-group">
             <input
               type="text"
+              name="name"
               placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
               required
             />
           </div>
           <div className="input-group">
             <input
               type="email"
+              name="email"
               placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
           <div className="input-group">
             <input
               type="password"
+              name="password"
               placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
           <div className="action-items">
-            <button type="submit" className="register-button">
-              Register
-            </button>
-            <button type="button" onClick={onClose} className="cancel-button">
-              Close
-            </button>
+            <button type="submit" className="register-button">Register</button>
           </div>
         </form>
       </div>
     </div>
   );
 }
-
 export default Register;
