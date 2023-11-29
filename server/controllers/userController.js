@@ -2,12 +2,19 @@
 import User from "../models/userModel.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import { validationResult } from "express-validator";
 
 // Signup
-
 const signupHandler = async (req, res, next) => {
   console.log(req.body);
   try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res
+        .status(422)
+        .json({ errors: errors.array().map((err) => err.msg) });
+    }
+
     const { name, email, password } = req.body;
     const alreadyRegistered = await User.findOne({ email });
     if (alreadyRegistered) {
@@ -21,19 +28,11 @@ const signupHandler = async (req, res, next) => {
         .status(400)
         .json({ message: "Please fill all fields required" });
     }
-    // Check if user already exists
-    // const existingUser = await User.findOne({ email: email });
-    // if (existingUser) {
-    //   return res
-    //     .status(409)
-    //     .json({ message: "User already exists with this email" });
-    // }
-    // Hash the password
     const saltRound = 10;
     const user = new User({
       name,
       email,
-      password: "",
+      password,
     });
     // Use the instance method to hash the password
     user.password = await user.hashPassword(password, saltRound);
@@ -90,33 +89,6 @@ const loginHandler = async (req, res, next) => {
   }
 };
 
-// Logout
-
-// const logoutHandler = async (req, res, next) => {
-//   try {
-//     // Make API call to logout endpoint
-//     const response = await fetch("/logout", {
-//       method: "POST",
-//       headers: {
-//         Authorization: `Bearer ${yourToken}`, // Include the user's token
-//         "Content-Type": "application/json",
-//       },
-//     });
-//     if (response.ok) {
-//       // Clear the token from local storage or cookies
-//       localStorage.removeItem("token"); // Change this based on your storage method
-
-//       // Additional logic, e.g., redirect to login page or update UI
-//     } else {
-//       // Handle error
-//       console.error("Logout failed");
-//     }
-//   } catch (error) {
-//     console.error("Error during logout:", error);
-//     return res.status(500).json({message: 'Internal Server Error'})
-//   }
-// };
-
 // Logout handler
 const logoutHandler = async (req, res, next) => {
   try {
@@ -124,9 +96,6 @@ const logoutHandler = async (req, res, next) => {
     if (!token) {
       return res.status(401).json({ message: "Unauthorized - Missing token" });
     }
-
-    // Perform any additional token validation or cleanup logic here if needed
-
     // Assuming success, you can simply send a response indicating successful logout
     return res.status(200).json({ message: "Logout successful" });
   } catch (error) {
