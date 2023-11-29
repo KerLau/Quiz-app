@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Register.css";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+
 function Register() {
   const [error, setError] = useState('')
   const navigate = useNavigate();
@@ -21,19 +22,19 @@ function Register() {
       if (response.data) {
         console.log("Registration successful:", response.data);
         navigate('/');
-      }else {
-        console.error('Registration failed:', response.data.message);
       }
     } catch (err) {
       console.error('Registration failed:', err.response.data.message);
     }
   };
+
+  const handleCancel = () => {
+    navigate('/');
+  };
+
   return (
     <div className="register-modal">
       <div className="register-container">
-        <button className="close-button" onClick={() => navigate('/')}>
-          <span>&times;</span>
-        </button>
         <h2>Sign up</h2>
         <form onSubmit={handleRegister} className="register-form">
           <div className="input-group">
@@ -62,10 +63,13 @@ function Register() {
           </div>
           <div className="action-items">
             <button type="submit" className="register-button">Register</button>
+            <button type="button" onClick={handleCancel} className="cancel-button">Cancel</button>
           </div>
+          <div className="error">{error}</div>
         </form>
       </div>
     </div>
   );
 }
+
 export default Register;

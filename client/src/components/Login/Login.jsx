@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "./Login.css";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
+
 function Login({ setAuthenticated, setUser }) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
+
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
@@ -18,21 +20,23 @@ function Login({ setAuthenticated, setUser }) {
         userCredentials
       );
       console.log("Authentication successful:", response.data);
-      localStorage.setItem("token", response.data.token);
       setAuthenticated(true);
       setUser(response.data.user);
+      localStorage.setItem("token", response.data.token);
       navigate('/');
     } catch (error) {
       console.error("Authentication failed:", error.message);
     }
   };
+
+  const handleCancel = () => {
+    navigate('/');
+  };
+
   return (
     <div className="login-modal">
       <div className="overlay"></div>
       <div className="login-container">
-        <button className="close-button" onClick={() => navigate('/')}>
-          <span>&times;</span>
-        </button>
         <h2>Login</h2>
         <form onSubmit={handleLogin} className="login-form">
           <div className="input-group">
@@ -55,10 +59,18 @@ function Login({ setAuthenticated, setUser }) {
           </div>
           <div className="action-items">
             <button type="submit" className="login-button">Login</button>
+            <button type="button" onClick={handleCancel} className="cancel-button">Cancel</button>
+          </div>
+          <div className="noaccount">
+            <h4>Don't have an account?</h4>
+            <button>
+              <NavLink to="/register" className="link">Sign up</NavLink>
+            </button>
           </div>
         </form>
       </div>
     </div>
   );
 }
+
 export default Login;

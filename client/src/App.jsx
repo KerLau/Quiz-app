@@ -14,6 +14,7 @@ function App() {
         authenticated={authenticated}
         setAuthenticated={setAuthenticated}
         setUser={setUser}
+        user={user}
       />
       <Routes>
         <Route path="/" element={<Home />} />
