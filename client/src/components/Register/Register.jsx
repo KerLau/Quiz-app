@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./Register.css";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Register() {
   const [error, setError] = useState('')
@@ -21,10 +23,13 @@ function Register() {
 
       if (response.data) {
         console.log("Registration successful:", response.data);
-        navigate('/');
+        toast.success("Registration successful");
+        // Delay navigation to ensure the user sees the notification
+        setTimeout(() => navigate('/'), 3000);
       }
     } catch (err) {
       console.error('Registration failed:', err.response.data.message);
+      toast.error("Registration failed");
     }
   };
 
@@ -34,6 +39,7 @@ function Register() {
 
   return (
     <div className="register-modal">
+      <ToastContainer />
       <div className="register-container">
         <h2>Sign up</h2>
         <form onSubmit={handleRegister} className="register-form">
