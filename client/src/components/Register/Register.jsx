@@ -23,13 +23,17 @@ function Register() {
 
       if (response.data) {
         console.log("Registration successful:", response.data);
-        toast.success("Registration successful");
+        toast.success("Registration successful", {
+          position: toast.POSITION.TOP_CENTER,
+        });
         // Delay navigation to ensure the user sees the notification
         setTimeout(() => navigate('/'), 3000);
       }
     } catch (err) {
       console.error('Registration failed:', err.response.data.message);
-      toast.error("Registration failed");
+      toast.error("Registration failed",{
+        position: toast.POSITION.TOP_CENTER,
+      });
     }
   };
 

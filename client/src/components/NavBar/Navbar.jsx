@@ -14,7 +14,9 @@ const Navbar = ({ authenticated, setAuthenticated, setUser }) => {
     localStorage.removeItem("token");
 
     // Show success notification
-    toast.success("Logged out successfully");
+    toast.success("Logged out successfully",{
+      position: toast.POSITION.TOP_CENTER,
+    });
 
     // Navigate to the homepage after logout
     navigate('/');

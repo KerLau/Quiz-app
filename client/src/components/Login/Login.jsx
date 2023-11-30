@@ -27,7 +27,9 @@ function Login({ setAuthenticated, setUser }) {
       localStorage.setItem("token", response.data.token);
       navigate('/');
     } catch (error) {
-      toast.error("Authentication failed");
+      toast.error("Authentication failed",{
+        position: toast.POSITION.TOP_CENTER,
+      });
       console.error("Authentication failed:", error.message);
     }
   };
