@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./Login.css";
 import axios from "axios";
 import { useNavigate, NavLink } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login({ setAuthenticated, setUser }) {
   const [password, setPassword] = useState("");
@@ -25,6 +27,7 @@ function Login({ setAuthenticated, setUser }) {
       localStorage.setItem("token", response.data.token);
       navigate('/');
     } catch (error) {
+      toast.error("Authentication failed");
       console.error("Authentication failed:", error.message);
     }
   };
@@ -35,6 +38,7 @@ function Login({ setAuthenticated, setUser }) {
 
   return (
     <div className="login-modal">
+      <ToastContainer />
       <div className="overlay"></div>
       <div className="login-container">
         <h2>Login</h2>
