@@ -24,4 +24,4 @@ app.get("/", (req, res) => {
   res.send("Welcome to the server");
 });
 
-app.use("/", userRoutes);
+app.use("/", userRoutes, loadCategories);
