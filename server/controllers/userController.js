@@ -3,6 +3,7 @@ import User from "../models/userModel.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { validationResult } from "express-validator";
+import Category from "../models/categoryModel.js";
 
 // Signup
 const signupHandler = async (req, res, next) => {
@@ -104,4 +105,14 @@ const logoutHandler = async (req, res, next) => {
   }
 };
 
-export default { loginHandler, signupHandler, logoutHandler };
+const getCategories = async (req, res, next) => {
+  try {
+    const categories = await Category.find();
+    res.status(200).json({ categories });
+  } catch (error) {
+    console.error("Error categories:", error.message);
+    next(error);
+  }
+};
+
+export default { loginHandler, signupHandler, logoutHandler, getCategories };

@@ -18,6 +18,7 @@ router.post(
   userController.signupHandler
 );
 router.get("/");
+router.get("/categories", userController.getCategories);
 router.post("/logout", authMiddleware, userController.logoutHandler);
 
 export default router;

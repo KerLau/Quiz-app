@@ -3,9 +3,11 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import cors from "cors";
+import loadCategories from "./utils/loadCategories.js";
 
 dotenv.config();
 connectDB();
+loadCategories();
 
 const app = express();
 const port = process.env.PORT || 6969;
