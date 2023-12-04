@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/NavBar/Navbar";
+//import Categories from "./components/Categories/Categories";
 import "./App.css";
 
 function App() {
   const [user, setUser] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
-
   return (
     <Router>
       <Navbar
@@ -28,6 +28,7 @@ function App() {
           element={<Login setAuthenticated={setAuthenticated} setUser={setUser} />}
         />
         <Route path="/register" element={<Register />} />
+       
       </Routes>
     </Router>
   );
