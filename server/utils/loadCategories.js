@@ -2,29 +2,27 @@ import connectDB from "../config/db.js";
 import Category from "../models/categoryModel.js";
 
 const categoriesData = [
-  { name: "General Knowledge about Antonio", order: 1 },
-  { name: "History & Historical Figures", order: 2 },
-  { name: "World Capitals & Geography", order: 3 },
-  { name: "Space & Astronomy", order: 4 },
-  { name: "Health & Wellness", order: 5 },
-  { name: "Sports & Records", order: 6 },
-  { name: "Culinary Arts & Cooking", order: 7 },
-  { name: "Music Genres & Artists", order: 8 },
-  { name: "Art & Art History", order: 9 },
-  { name: "Nature & Wildife", order: 10 },
+  { name: "General Knowledge" },
+  { name: "History & Historical Figures" },
+  { name: "World Capitals & Geography" },
+  { name: "Space & Astronomy" },
+  { name: "Health & Wellness" },
+  { name: "Sports & Records" },
+  { name: "Culinary Arts & Cooking" },
+  { name: "Music Genres & Artists" },
+  { name: "Art & Art History" },
+  { name: "Nature & Wildife" },
 ];
 
 const loadCategories = async () => {
   try {
-    // await connectDB();
+    //await connectDB();
     await Category.deleteMany(); // Clear existing categories
     await Category.insertMany(categoriesData);
     // const categories = await Category.create(categoriesData);
     console.log("Categories loaded successfully:", categoriesData);
   } catch (error) {
     console.error("Error loading categories:", error.message);
-  } finally {
-    process.exit(); // Terminate the script
   }
 };
 // async function loadCategories() {
