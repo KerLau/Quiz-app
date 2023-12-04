@@ -11,6 +11,7 @@
     font-weight: bold;
     color: white;
     text-decoration: none;
+    margin-right: auto;
   }
   .nav-links .nav-button {
     background-color: transparent;

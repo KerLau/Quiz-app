@@ -1,1 +1,0 @@
-// Defines the schema for quiz attempts
