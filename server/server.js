@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
+import categoryRoute from "./routes/categoryRoute.js"; // Import the category routes
 import cors from "cors";
 import loadCategories from "./utils/loadCategories.js";
 
@@ -16,6 +17,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+// Use the user routes
+app.use("/user", userRoutes);
+
+// Use the category routes
+app.use("/categories", categoryRoute);
+
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
@@ -24,4 +31,4 @@ app.get("/", (req, res) => {
   res.send("Welcome to the server");
 });
 
-app.use("/", userRoutes, loadCategories);
+// Note: Removed the "loadCategories" from the app.use() middleware stack

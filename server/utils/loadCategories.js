@@ -11,7 +11,7 @@ const categoriesData = [
   { name: "Culinary Arts & Cooking", order: 7 },
   { name: "Music Genres & Artists", order: 8 },
   { name: "Art & Art History", order: 9 },
-  { name: "Nature & Wildlife", order: 10 },
+  { name: "Nature & Wildife", order: 10 },
 ];
 
 const loadCategories = async () => {
