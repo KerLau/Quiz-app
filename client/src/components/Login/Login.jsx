@@ -18,7 +18,7 @@ function Login({ setAuthenticated, setUser }) {
         password: password,
       };
       const response = await axios.post(
-        "http://localhost:3000/login",
+        "http://localhost:3000/user/login",
         userCredentials
       );
       console.log("Authentication successful:", response.data);

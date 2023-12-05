@@ -1,8 +1,8 @@
 // Handles user related requests like sign up login log out etc
 import User from "../models/userModel.js";
-import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { validationResult } from "express-validator";
+import Category from "../models/categoryModel.js";
 
 // Signup
 const signupHandler = async (req, res, next) => {
@@ -89,19 +89,4 @@ const loginHandler = async (req, res, next) => {
   }
 };
 
-// Logout handler
-const logoutHandler = async (req, res, next) => {
-  try {
-    const token = req.yourToken; // Make sure to use the correct variable name
-    if (!token) {
-      return res.status(401).json({ message: "Unauthorized - Missing token" });
-    }
-    // Assuming success, you can simply send a response indicating successful logout
-    return res.status(200).json({ message: "Logout successful" });
-  } catch (error) {
-    console.error("Error during logout:", error);
-    return res.status(500).json({ message: "Internal Server Error" });
-  }
-};
-
-export default { loginHandler, signupHandler, logoutHandler };
+export default { loginHandler, signupHandler };

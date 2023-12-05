@@ -19,7 +19,7 @@ function Register() {
     }
 
     try {
-      const response = await axios.post('http://localhost:3000/signup', user);
+      const response = await axios.post('http://localhost:3000/user/signup', user);
 
       if (response.data) {
         console.log("Registration successful:", response.data);
