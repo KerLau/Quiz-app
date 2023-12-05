@@ -1,6 +1,9 @@
+// Home.jsx
+
 import React from "react";
 import "./Home.css";
 import bridge from "../../assets/Home/bridge.jpg";
+import { Link } from "react-router-dom";
 
 const Home = ({ user }) => {
   return (
@@ -16,6 +19,9 @@ const Home = ({ user }) => {
           intelligence. Dive into a personalized learning experience that
           adapts to your progress, making education interactive and fun.
         </p>
+        <Link to="/categories" className="play-link">
+          Play the quiz
+        </Link>
       </div>
       <img className="bridge" src={bridge} alt="Bridge" />
     </div>
