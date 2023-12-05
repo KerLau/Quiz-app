@@ -23,6 +23,7 @@ const Navbar = ({ authenticated, setAuthenticated, setUser }) => {
   };
 
   return (
+    <>
     <nav className="navbar">
       <ToastContainer />
       <Link to="/" className="logo">
@@ -31,16 +32,22 @@ const Navbar = ({ authenticated, setAuthenticated, setUser }) => {
       <div className="nav-links">
         {authenticated ? (
           // If the user is authenticated, show the "Log Out" button
-          <button onClick={logoutHandler}>Log Out</button>
+          <>
+          <Link to="/categories" className='nav-button'>Categories</Link>
+          <button onClick={logoutHandler}>Sign Out</button>
+          </>
+          
         ) : (
           // If the user is not authenticated, show "Sign Up" and "Login" links
           <>
+            <Link to="/categories" className='nav-button'>Categories</Link>
             <Link to="/register" className="nav-button">Sign Up</Link>
             <Link to="/login" className="nav-button">Login</Link>
           </>
         )}
       </div>
     </nav>
+    </>
   );
 };
 

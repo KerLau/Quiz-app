@@ -4,7 +4,7 @@ import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Navbar from "./components/NavBar/Navbar";
-//import Categories from "./components/Categories/Categories";
+import Categories from "./components/Categories/Categories";
 import "./App.css";
 
 function App() {
@@ -22,6 +22,10 @@ function App() {
         <Route
           path="/"
           element={<Home user={user} />}
+        />
+        <Route
+          path="/categories"
+          element={<Categories />}
         />
         <Route
           path="/login"

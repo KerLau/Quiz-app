@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Register.css";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,NavLink } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -75,7 +75,12 @@ function Register() {
             <button type="submit" className="register-button">Register</button>
             <button type="button" onClick={handleCancel} className="cancel-button">Cancel</button>
           </div>
-          <div className="error">{error}</div>
+          <div className="noaccount">
+            <h4>Have an account?</h4>
+            <button>
+              <NavLink to="/login" className="link">Log in</NavLink>
+            </button>
+          </div>
         </form>
       </div>
     </div>
