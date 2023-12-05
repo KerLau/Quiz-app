@@ -1,3 +1,4 @@
 # Quiz-app
 
 ## SYNAPSTER
+.
