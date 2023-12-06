@@ -1,27 +1,82 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    color: white;
-    padding: 0.5rem 1rem;
-  }
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
-    margin-right: auto;
-  }
-  .nav-links .nav-button {
-    background-color: transparent;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    margin-left: 0.5rem;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  .nav-links .nav-button:hover {
-    background-color: #555;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #201f1f;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  margin-right: auto;
+}
+
+.logo-image {
+  max-width: 150px;
+  max-height: 80px;
+}
+
+.nav-links .nav-button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.nav-links .nav-button:hover {
+  background-color: #555;
+}
+
+.nav-links .categories-button {
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+  box-shadow: 0 0 3px rgb(230, 230, 7);
+}
+
+.nav-links .categories-button:hover {
+  background-color: rgb(230, 230, 7);
+  color: black;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+.nav-links .signup-button {
+  background-color: transparent;
+  color: whitesmoke;
+  box-shadow: 0 0 3px rgb(30, 144, 255);
+}
+
+.nav-links .signup-button:hover {
+  background-color: rgb(30, 144, 255);
+  color: whitesmoke;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+.nav-links .login-button {
+  background-color: transparent;
+  color: whitesmoke;
+  box-shadow: 0 0 3px rgb(34, 160, 5);
+}
+
+.nav-links .login-button:hover {
+  background-color: rgb(34, 160, 5);
+  color: whitesmoke;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+.nav-links .signout-button {
+  background-color: rgb(160, 4, 4);
+  color: whitesmoke;
+}

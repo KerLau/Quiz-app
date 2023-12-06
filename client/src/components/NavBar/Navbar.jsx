@@ -1,8 +1,9 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './Navbar.css';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./Navbar.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import logo from "../../assets/Home/logo.png";
 
 const Navbar = ({ authenticated, setAuthenticated, setUser }) => {
   const navigate = useNavigate();
@@ -14,39 +15,46 @@ const Navbar = ({ authenticated, setAuthenticated, setUser }) => {
     localStorage.removeItem("token");
 
     // Show success notification
-    toast.success("Logged out successfully",{
+    toast.success("Logged out successfully", {
       position: toast.POSITION.TOP_CENTER,
     });
 
     // Navigate to the homepage after logout
-    navigate('/');
+    navigate("/");
   };
 
   return (
     <>
-    <nav className="navbar">
-      <ToastContainer />
-      <Link to="/" className="logo">
-        Synapster
-      </Link>
-      <div className="nav-links">
-        {authenticated ? (
-          // If the user is authenticated, show the "Log Out" button
-          <>
-          <Link to="/categories" className='nav-button'>Categories</Link>
-          <button onClick={logoutHandler}>Sign Out</button>
-          </>
-          
-        ) : (
-          // If the user is not authenticated, show "Sign Up" and "Login" links
-          <>
-            <Link to="/categories" className='nav-button'>Categories</Link>
-            <Link to="/register" className="nav-button">Sign Up</Link>
-            <Link to="/login" className="nav-button">Login</Link>
-          </>
-        )}
-      </div>
-    </nav>
+      <nav className="navbar">
+        <ToastContainer />
+        <Link to="/" className="logo">
+          <img src={logo} className="logo-image" alt="Logo" />
+        </Link>
+        <div className="nav-links">
+          {authenticated ? (
+            // If the user is authenticated, show the "Log Out" button
+            <>
+              <Link to="/categories" className="nav-button categories-button">
+                Categories
+              </Link>
+              <button onClick={logoutHandler}>Sign Out</button>
+            </>
+          ) : (
+            // If the user is not authenticated, show "Sign Up" and "Login" links
+            <>
+              <Link to="/categories" className="nav-button categories-button">
+                Categories
+              </Link>
+              <Link to="/register" className="nav-button signup-button">
+                Sign Up
+              </Link>
+              <Link to="/login" className="nav-button login-button">
+                Login
+              </Link>
+            </>
+          )}
+        </div>
+      </nav>
     </>
   );
 };
