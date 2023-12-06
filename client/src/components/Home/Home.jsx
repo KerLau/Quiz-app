@@ -1,5 +1,3 @@
-// Home.jsx
-
 import React from "react";
 import "./Home.css";
 import bridge from "../../assets/Home/bridge.jpg";
