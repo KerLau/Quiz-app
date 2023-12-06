@@ -51,4 +51,24 @@
 
 .title-section p {
   font-size: 18px;
+  margin-bottom: 60px;
+}
+.play-link {
+  background-color: #d9534f;
+  padding: 15px 30px;
+  margin: 20px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  text-decoration: none; /* Remove underline from the link */
+  color: #fff; /* Set text color to white */
+}
+
+/* Add additional styles as needed */
+.play-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 2px 3px rgba(217,83,79);
 }

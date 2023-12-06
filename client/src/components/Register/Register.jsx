@@ -21,11 +21,12 @@ function Register() {
       );
       if (response.data) {
         console.log("Registration successful:", response.data);
-        toast.success("Registration successful", {
-          position: toast.POSITION.TOP_CENTER,
-        });
-        // Delay navigation to ensure the user sees the notification
-        setTimeout(() => navigate("/"), 3000);
+        navigate('/');
+        setTimeout(() => {
+          toast.success("Registration successful", {
+            position: toast.POSITION.TOP_CENTER,
+          });
+        },); // Delay is adjusted to ensure it fires after the redirect
       }
     } catch (err) {
       console.error("Registration failed:", err.response.data.message);
