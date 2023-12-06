@@ -16,8 +16,12 @@
 }
 
 .logo-image {
-  max-width: 150px;
-  max-height: 80px;
+  max-width: 100px;
+  max-height: 50px;
+}
+
+.navlinks {
+  margin-right: 3rem;
 }
 
 .nav-links .nav-button {
@@ -28,7 +32,7 @@
   border: 1px solid black;
   border-radius: 5px;
   padding: 0.5rem 1rem;
-  margin-left: 0.5rem;
+  margin-left: 1.5rem;
   cursor: pointer;
   text-decoration: none;
 }

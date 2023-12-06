@@ -96,15 +96,19 @@
   color: whitesmoke;
 }
 
-.noaccount button {
+.noaccount .sign-up {
   background-color: transparent;
   color: whitesmoke;
   box-shadow: 0 0 3px rgb(30, 144, 255);
 }
 
-.noaccount button:hover {
+.noaccount .sign-up:hover {
   background-color: rgb(30, 144, 255);
   color: whitesmoke;
   border: 1px solid black;
   border-radius: 8px;
+}
+
+.action-items {
+  width: 135px;
 }

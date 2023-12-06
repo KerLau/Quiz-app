@@ -87,3 +87,19 @@
   border: 1px solid black;
   border-radius: 8px;
 }
+
+.noaccount {
+  width: 135px;
+}
+.noaccount button {
+  background-color: transparent;
+  color: whitesmoke;
+  box-shadow: 0 0 3px rgb(34, 160, 5);
+}
+
+.noaccount button:hover {
+  background-color: rgb(34, 160, 5);
+  color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 8px;
+}

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Login.css";
 import axios from "axios";
-import { useNavigate, NavLink } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate, NavLink } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Login({ setAuthenticated, setUser }) {
   const [password, setPassword] = useState("");
@@ -25,9 +25,9 @@ function Login({ setAuthenticated, setUser }) {
       setAuthenticated(true);
       setUser(response.data.user);
       localStorage.setItem("token", response.data.token);
-      navigate('/');
+      navigate("/");
     } catch (error) {
-      toast.error("Authentication failed",{
+      toast.error("Authentication failed", {
         position: toast.POSITION.TOP_CENTER,
       });
       console.error("Authentication failed:", error.message);
@@ -35,7 +35,7 @@ function Login({ setAuthenticated, setUser }) {
   };
 
   const handleCancel = () => {
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -64,13 +64,23 @@ function Login({ setAuthenticated, setUser }) {
             />
           </div>
           <div className="action-items">
-            <button type="submit" className="login-button">Login</button>
-            <button type="button" onClick={handleCancel} className="cancel-button">Cancel</button>
+            <button type="submit" className="login-button">
+              Login
+            </button>
+            <button
+              type="button"
+              onClick={handleCancel}
+              className="cancel-button"
+            >
+              Cancel
+            </button>
           </div>
           <div className="noaccount">
             <h4>Don't have an account?</h4>
-            <button>
-              <NavLink to="/register" className="link">Sign up</NavLink>
+            <button className="sign-up">
+              <NavLink to="/register" className="link">
+                Sign up
+              </NavLink>
             </button>
           </div>
         </form>
