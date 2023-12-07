@@ -14,12 +14,14 @@ const Home = ({ user }) => {
           Introducing our AI Quiz App, crafted by a dynamic team of three
           full-stack web developers. Elevate your knowledge with a seamless
           blend of engaging quizzes powered by cutting-edge artificial
-          intelligence. Dive into a personalized learning experience that
-          adapts to your progress, making education interactive and fun.
+          intelligence. Dive into a personalized learning experience that adapts
+          to your progress, making education interactive and fun.
         </p>
-        <Link to="/categories" className="play-link">
-          Play the quiz
-        </Link>
+        {user && (
+          <Link to="/categories" className="play-link">
+            Play the quiz
+          </Link>
+        )}
       </div>
       <img className="bridge" src={bridge} alt="Bridge" />
     </div>
