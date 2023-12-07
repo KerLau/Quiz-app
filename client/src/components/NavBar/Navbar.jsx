@@ -34,17 +34,16 @@ const Navbar = ({ authenticated, setAuthenticated, setUser }) => {
           {authenticated ? (
             // If the user is authenticated, show the "Log Out" button
             <>
-              <Link to="/categories" className="nav-button categories-button">
-                Categories
-              </Link>
-              <button onClick={logoutHandler}>Sign Out</button>
+              <button
+                className="nav-button signout-button"
+                onClick={logoutHandler}
+              >
+                Sign Out
+              </button>
             </>
           ) : (
             // If the user is not authenticated, show "Sign Up" and "Login" links
             <>
-              <Link to="/categories" className="nav-button categories-button">
-                Categories
-              </Link>
               <Link to="/register" className="nav-button signup-button">
                 Sign Up
               </Link>

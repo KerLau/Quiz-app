@@ -20,7 +20,7 @@
   max-height: 50px;
 }
 
-.navlinks {
+.nav-links {
   margin-right: 3rem;
 }
 
@@ -81,6 +81,14 @@
 }
 
 .nav-links .signout-button {
-  background-color: rgb(160, 4, 4);
+  background-color: transparent;
   color: whitesmoke;
+  box-shadow: 0 0 3px rgb(209, 2, 2);
+}
+
+.nav-links .signout-button:hover {
+  background-color: rgb(209, 2, 2);
+  color: whitesmoke;
+  border: 2px solid black;
+  border-radius: 8px;
 }
