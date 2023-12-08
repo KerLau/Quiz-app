@@ -1,0 +1,74 @@
+.quiz-container {
+    background: #0f0f23;
+    border-radius: 20px;
+    padding: 40px;
+    width: 80%;
+    max-width: 800px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center vertically */
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.7); /* Neon glow */
+    z-index: 2; /* Ensure it's above any other positioned elements */
+}
+
+.quiz-container:before {
+  content: '';
+  position: absolute;
+  top: -2px; right: -2px; bottom: -2px; left: -2px;
+  z-index: -1;
+  background: #0f0f23;
+  border-radius: 20px;
+  
+}
+
+.quiz-header {
+  font-size: 3rem;
+  color: #00ffea; /* Neon blue */
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.7); /* Neon text glow */
+  margin-bottom: 20px;
+}
+
+.question {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.answer-btn {
+  background: #212244;
+  color: #ffffff;
+  border: 1px solid #00ffea; /* Neon border */
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  display: block; /* Stack buttons vertically */
+  margin: 10px auto; /* Center buttons horizontally */
+  width: 80%; /* Give buttons a consistent width */
+}
+
+.answer-btn:hover {
+  background-color: #2a2b48;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.7); /* Neon button glow on hover */
+}
+
+.quiz-navigation .nav-btn {
+  background: #212244;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  display: inline-block; /* Place buttons in a row */
+}
+
+.nav-btn:hover {
+  background-color: #2a2b48;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.7); /* Neon button glow on hover */
+}
