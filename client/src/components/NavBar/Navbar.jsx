@@ -30,10 +30,6 @@ const Navbar = ({ authenticated, setAuthenticated, setUser }) => {
         <img src={logo} className="logo-image" alt="Logo" />
       </Link>
       <div className="nav-links">
-        {/* New Play Quiz Link */}
-        <Link to="/quiz" className="nav-button">
-          Play Quiz
-        </Link>
         {authenticated ? (
           <>
             <button

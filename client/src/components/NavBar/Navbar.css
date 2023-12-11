@@ -24,11 +24,6 @@
 .nav-links {
   margin-right: 3rem;
 }
-.quiz-link {
-  /* Specific styles for the quiz link if needed */
-  background-color: #0f3460; /* Example: a distinct background color */
-  color: #00ffea; /* Example: neon text color */
-}
 
 .nav-links .nav-button {
   font-family: Arial, Helvetica, sans-serif;
