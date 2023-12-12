@@ -17,9 +17,15 @@ const categoriesData = [
 const loadCategories = async () => {
   try {
     //await connectDB();
-    await Category.deleteMany(); // Clear existing categories
-    await Category.insertMany(categoriesData);
-    console.log("Categories loaded successfully:", categoriesData);
+    const existingCategories = await Category.find();
+
+    if (existingCategories.length === 0) {
+      // If no categories exist, insert them
+      await Category.insertMany(categoriesData);
+      console.log("Categories loaded successfully:", categoriesData);
+    } else {
+      console.log("Categories already exist. Skipping insertion.");
+    }
   } catch (error) {
     console.error("Error loading categories:", error.message);
   }

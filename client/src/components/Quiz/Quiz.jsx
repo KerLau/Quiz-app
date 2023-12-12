@@ -14,8 +14,10 @@ const Quiz = () => {
 
   useEffect(() => {
     fetchQuestion();
-  }, [category]);
-
+  }, []);
+  useEffect(()=>{
+    console.log('Component renendered 1st time',)
+  })
   const fetchQuestion = async () => {
     try {
       const response = await axios.get(`http://localhost:3000/quiz/question/${category}`);
