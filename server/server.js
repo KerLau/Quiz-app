@@ -2,7 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
-import categoryRoute from "./routes/categoryRoute.js"; // Import the category routes
+import categoryRoute from "./routes/categoryRoute.js";
+import quizRoutes from "./routes/quizRoutes.js"; 
 import cors from "cors";
 import loadCategories from "./utils/loadCategories.js";
 
@@ -11,7 +12,7 @@ connectDB();
 loadCategories();
 
 const app = express();
-const port = process.env.PORT || 6969;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -21,18 +22,27 @@ app.use((req, res, next) => {
   console.log(req.url);
   next();
 });
-// Use the user routes
+
 app.use("/user", userRoutes);
 
-// Use the category routes
 app.use("/categories", categoryRoute);
 
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
-});
+
+app.use("/quiz", quizRoutes);
 
 app.get("/", (req, res) => {
   res.send("Welcome to the server");
 });
 
-// Note: Removed the "loadCategories" from the app.use() middleware stack
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port: ${port}`);
+});
+
+
+
