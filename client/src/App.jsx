@@ -1,3 +1,5 @@
+// App.js
+
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
@@ -6,10 +8,13 @@ import Register from "./components/Register/Register";
 import Navbar from "./components/NavBar/Navbar";
 import Categories from "./components/Categories/Categories";
 import Quiz from "./components/Quiz/Quiz";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary"; // Import the ErrorBoundary component
 import "./App.css";
+
 function App() {
   const [user, setUser] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
+
   return (
     <Router>
       <Navbar
@@ -18,23 +23,17 @@ function App() {
         setUser={setUser}
         user={user}
       />
-      <Routes>
-        <Route
-          path="/"
-          element={<Home user={user} />}
-        />
-        <Route
-          path="/categories"
-          element={<Categories />}
-        />
-        <Route
-          path="/login"
-          element={<Login setAuthenticated={setAuthenticated} setUser={setUser} />}
-        />
-        <Route path="/register" element={<Register />} />
-       <Route path="/quiz" element={<Quiz />} />
-      </Routes>
+      <ErrorBoundary> 
+        <Routes>
+          <Route path="/" element={<Home user={user} />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/login" element={<Login setAuthenticated={setAuthenticated} setUser={setUser} />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/quiz/:category" element={<Quiz />} /> {/* Assuming Quiz component expects a category param */}
+        </Routes>
+      </ErrorBoundary>
     </Router>
   );
 }
+
 export default App;
