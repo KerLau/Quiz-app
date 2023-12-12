@@ -1,17 +1,15 @@
-// Categories.jsx
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './Categories.css';
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
 
   const fetchCategories = async () => {
     try {
       const response = await axios.get('http://localhost:3000/categories');
-      console.log('Response Status:', response.status);
-      console.log('Response Data:', response.data);
       setCategories(response.data.categories);
     } catch (error) {
       console.error('Error fetching categories:', error);
@@ -23,8 +21,7 @@ const Categories = () => {
   }, []);
 
   const handleCategorySelect = (category) => {
-    console.log(`Category selected: ${category}`);
-    // Implement navigation to the category's quiz page or other actions
+    navigate(`/quiz/${category}`);
   };
 
   return (
