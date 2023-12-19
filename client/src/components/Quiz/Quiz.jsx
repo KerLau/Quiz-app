@@ -46,10 +46,12 @@ const Quiz = () => {
   };
 
   const getButtonClass = (answer) => {
-    if (!hasAnswered) return 'answer-btn';
-    if (answer === correctAnswer) return 'answer-btn correct';
-    if (answer === selectedAnswer) return 'answer-btn incorrect';
-    return 'answer-btn';
+    console.log(correctAnswer);
+    console.log(selectedAnswer);
+    if (!hasAnswered) return "answer-btn";
+    if (answer === correctAnswer) return "answer-btn answer-btn-correct";
+    if (answer === selectedAnswer) return "answer-btn answer-btn-incorrect";
+    return "answer-btn";
   };
 
   return (
