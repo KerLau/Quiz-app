@@ -49,14 +49,14 @@
   width: 80%;
 }
 .answer-btn:hover {
-  background-color: #2A2B48;
+  background: #2A2B48;
   box-shadow: 0 0 13px rgba(0, 255, 255, 0.7);
 }
-.answer-btn.correct {
-  background-color: green;
+.answer-btn-correct {
+  background: green;
 }
-.answer-btn.incorrect {
-  background-color: red;
+.answer-btn-incorrect {
+  background: red;
 }
 .answer-btn:disabled {
   opacity: 0.6;
