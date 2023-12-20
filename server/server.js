@@ -3,7 +3,8 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import categoryRoute from "./routes/categoryRoute.js";
-import quizRoutes from "./routes/quizRoutes.js"; 
+import quizRoutes from "./routes/quizRoutes.js";
+import answerRoutes from "./routes/answerRoutes.js";
 import cors from "cors";
 import loadCategories from "./utils/loadCategories.js";
 
@@ -27,22 +28,19 @@ app.use("/user", userRoutes);
 
 app.use("/categories", categoryRoute);
 
-
 app.use("/quiz", quizRoutes);
+
+app.use("/answers", answerRoutes);
 
 app.get("/", (req, res) => {
   res.send("Welcome to the server");
 });
 
-
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send('Something broke!');
+  res.status(500).send("Something broke!");
 });
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
-
-
-

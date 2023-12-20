@@ -46,8 +46,8 @@ const Quiz = () => {
   };
 
   const getButtonClass = (answer) => {
-    console.log(correctAnswer);
-    console.log(selectedAnswer);
+    console.log('Correct:', correctAnswer);
+    console.log('Selected:', selectedAnswer);
     if (!hasAnswered) return "answer-btn";
     if (answer === correctAnswer) return "answer-btn answer-btn-correct";
     if (answer === selectedAnswer) return "answer-btn answer-btn-incorrect";
