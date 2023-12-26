@@ -29,7 +29,7 @@ function App() {
           <Route path="/categories" element={<Categories />} />
           <Route path="/login" element={<Login setAuthenticated={setAuthenticated} setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/quiz/:category" element={<Quiz />} /> {/* Assuming Quiz component expects a category param */}
+          <Route path="/quiz/:category" element={<Quiz user={user} />} /> {/* Assuming Quiz component expects a category param */}
         </Routes>
       </ErrorBoundary>
     </Router>
