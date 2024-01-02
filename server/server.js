@@ -7,6 +7,7 @@ import quizRoutes from "./routes/quizRoutes.js";
 import answerRoutes from "./routes/answerRoutes.js";
 import cors from "cors";
 import loadCategories from "./utils/loadCategories.js";
+import leaderboardRoutes from "./routes/leaderboardRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -31,6 +32,8 @@ app.use("/categories", categoryRoute);
 app.use("/quiz", quizRoutes);
 
 app.use("/answers", answerRoutes);
+
+app.use("/leaderboard", leaderboardRoutes);
 
 app.get("/", (req, res) => {
   res.send("Welcome to the server");

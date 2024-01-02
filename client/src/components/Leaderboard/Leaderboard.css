@@ -1,0 +1,113 @@
+.leaderboard-container {
+    font-family: 'Arial', sans-serif;
+    width: 900px;
+    margin: 20px auto;
+    background: #FFFFFF;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+  }
+  .leaderboard-header {
+    background-color: #625FF7; /* Purple shade from the design */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+  }
+  .leaderboard-tabs {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin: -20px 0 20px; /* Align tabs with the header */
+  }
+  .leaderboard-tabs li {
+    padding: 10px 20px;
+    cursor: pointer;
+    color: white;
+    background-color: #625FF7; /* Match the header background */
+    margin: 0 10px;
+    border-radius: 10px; /* Rounded tabs */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  .leaderboard-tabs li:hover,
+  .leaderboard-tabs .active {
+    background-color: #7B4B94; /* A highlight color for the active/hovered tab */
+  }
+  .leaderboard-content {
+    padding: 20px;
+  }
+  .leaderboard-entry {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    background: #F6F6F9; /* Light background for each entry */
+    padding: 10px;
+    border-radius: 10px; /* Rounded corners for entry */
+  }
+  .leaderboard-rank {
+    font-size: 1.5em; /* Larger rank size */
+    margin-right: 15px;
+    font-weight: bold;
+    color: #333;
+  }
+  .leaderboard-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 2px solid #625FF7; /* Border color matching the header */
+  }
+  .leaderboard-info {
+    flex-grow: 1;
+  }
+  .leaderboard-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .leaderboard-points {
+    color: #777;
+  }
+  /* Styles for dropdown */
+  select {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none; /* Removing border for a cleaner look */
+    background-color: #F6F6F9; /* Light background for dropdown */
+    font-size: 16px; /* Increasing font size */
+    width: 100%; /* Full width */
+  }
+  /* Styles for table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  table th, table td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  table th {
+    background-color: #eee;
+  }
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .leaderboard-container {
+      padding: 10px;
+    }
+    .leaderboard-tabs li {
+      padding: 5px 10px;
+    }
+    .leaderboard-entry {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .leaderboard-avatar {
+      width: 40px;
+      height: 40px;
+    }
+    .leaderboard-rank {
+      font-size: 1em;
+    }
+  }

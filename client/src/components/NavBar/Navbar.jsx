@@ -34,6 +34,7 @@ const Navbar = ({ authenticated, setAuthenticated, setUser }) => {
           {authenticated ? (
             // If the user is authenticated, show the "Log Out" button
             <>
+            <Link to="/leaderboard">Leaderboard</Link>
               <button
                 className="nav-button signout-button"
                 onClick={logoutHandler}

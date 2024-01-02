@@ -10,6 +10,7 @@ import Categories from "./components/Categories/Categories";
 import Quiz from "./components/Quiz/Quiz";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary"; // Import the ErrorBoundary component
 import "./App.css";
+import Leaderboard from "./components/Leaderboard/Leaderboard";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -30,6 +31,7 @@ function App() {
           <Route path="/login" element={<Login setAuthenticated={setAuthenticated} setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
           <Route path="/quiz/:category" element={<Quiz user={user} />} /> {/* Assuming Quiz component expects a category param */}
+          <Route path="/leaderboard" element={<Leaderboard/>} />
         </Routes>
       </ErrorBoundary>
     </Router>
