@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import './Quiz.css';
 
-const Quiz = () => {
+const Quiz = ({ user }) => {
   const { category } = useParams();
   const navigate = useNavigate();
   const [question, setQuestion] = useState('');
@@ -32,9 +32,19 @@ const Quiz = () => {
     }
   };
 
-  const handleAnswerSelect = (answer) => {
+  const handleAnswerSelect = async (answer) => {
     setSelectedAnswer(answer);
     setHasAnswered(true);
+    console.log({user})
+    axios
+      .post("http://localhost:3000/answers/", {
+        userId: user._id,
+        categoryName: category,
+        answerText: answer,
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleNextQuestion = () => {
