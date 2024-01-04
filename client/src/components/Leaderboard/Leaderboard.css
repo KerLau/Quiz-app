@@ -1,113 +1,139 @@
+
 .leaderboard-container {
-    font-family: 'Arial', sans-serif;
-    width: 900px;
-    margin: 20px auto;
-    background: #FFFFFF;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+  font-family: 'Arial', sans-serif;
+  background-color: #545d6e; 
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 20px auto;
+  padding: 20px; /* Padding around content */
+  max-width: 100%; /* Full width on mobile */
+}
+
+
+.leaderboard-header {
+  background-color: #625FF7; 
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 24px; 
+}
+
+.leaderboard-select {
+  padding: 10px;
+  background-color: rgb(214, 185, 185);
+}
+
+.leaderboard-select select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.leaderboard-content {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgb(199, 186, 186);
+  margin-top: 20px;
+}
+
+.leaderboard-content thead {
+  background-color: #786ae0; 
+  color: rgb(231, 160, 160);
+}
+
+.leaderboard-content thead th {
+  padding: 10px;
+  text-align: left;
+}
+
+.leaderboard-content tbody tr {
+  border-bottom: 1px solid #332727;
+}
+
+.leaderboard-content tbody tr:last-child {
+  border-bottom: none;
+}
+
+.leaderboard-content tbody td {
+  text-align: left;
+  padding: 10px;
+}
+
+.leaderboard-entry:nth-child(odd) {
+  background-color: #9696af; /* Zebra striping for rows */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  /* Tablet styles */
+  .leaderboard-container {
+    max-width: 600px; /* Adjust width for tablets */
   }
+
   .leaderboard-header {
-    background-color: #625FF7; /* Purple shade from the design */
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    position: relative;
+    font-size: 20px; /* Adjust font size for tablets */
   }
-  .leaderboard-tabs {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 0;
-    margin: -20px 0 20px; /* Align tabs with the header */
+
+}
+
+@media (max-width: 1024px) {
+  /* Desktop styles */
+  .leaderboard-container {
+    max-width: 900px; /* Adjust width for desktops */
   }
-  .leaderboard-tabs li {
-    padding: 10px 20px;
-    cursor: pointer;
-    color: white;
-    background-color: #625FF7; /* Match the header background */
-    margin: 0 10px;
-    border-radius: 10px; /* Rounded tabs */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+
+  .leaderboard-header {
+    font-size: 24px; /* Adjust font size for desktops */
   }
-  .leaderboard-tabs li:hover,
-  .leaderboard-tabs .active {
-    background-color: #7B4B94; /* A highlight color for the active/hovered tab */
+
+
+}
+
+@media (max-width: 480px) {
+  /* Mobile styles */
+  .leaderboard-container {
+    max-width: 100%; /* Full width on smaller mobile devices */
+    margin: 10px; /* Adjust margin for mobile */
+    padding: 10px; /* Adjust padding for mobile */
   }
-  .leaderboard-content {
-    padding: 20px;
+
+  .leaderboard-header {
+    padding: 15px; /* Adjust header padding for mobile */
+    font-size: 18px; /* Adjust header font size for mobile */
   }
+
+  .leaderboard-content thead {
+    display: none; /* Hide table headers on mobile */
+  }
+
+  .leaderboard-content tbody td {
+    display: block; /* Block display for stacking */
+    text-align: right; /* Right align the text */
+    padding: 8px 4px; /* Adjust padding for mobile */
+  }
+
+  .leaderboard-content tbody td::before {
+    content: attr(data-label); /* Add content for data label */
+    float: left;
+    font-weight: bold;
+    color: #6c5ce7; /* Use the theme color */
+  }
+
   .leaderboard-entry {
     display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    background: #F6F6F9; /* Light background for each entry */
-    padding: 10px;
-    border-radius: 10px; /* Rounded corners for entry */
+    flex-direction: column; /* Stack children vertically */
+    padding: 10px; /* Adjust padding for mobile */
   }
-  .leaderboard-rank {
-    font-size: 1.5em; /* Larger rank size */
-    margin-right: 15px;
-    font-weight: bold;
-    color: #333;
+
+  .leaderboard-entry:nth-child(odd) {
+    background-color: transparent; /* Remove striping on mobile */
   }
-  .leaderboard-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 15px;
-    border: 2px solid #625FF7; /* Border color matching the header */
+
+  .leaderboard-select select {
+    padding: 8px; /* Adjust select padding for mobile */
+    font-size: 14px; /* Adjust font size for mobile */
   }
-  .leaderboard-info {
-    flex-grow: 1;
-  }
-  .leaderboard-name {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  .leaderboard-points {
-    color: #777;
-  }
-  /* Styles for dropdown */
-  select {
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: none; /* Removing border for a cleaner look */
-    background-color: #F6F6F9; /* Light background for dropdown */
-    font-size: 16px; /* Increasing font size */
-    width: 100%; /* Full width */
-  }
-  /* Styles for table */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  table th, table td {
-    text-align: left;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  table th {
-    background-color: #eee;
-  }
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .leaderboard-container {
-      padding: 10px;
-    }
-    .leaderboard-tabs li {
-      padding: 5px 10px;
-    }
-    .leaderboard-entry {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .leaderboard-avatar {
-      width: 40px;
-      height: 40px;
-    }
-    .leaderboard-rank {
-      font-size: 1em;
-    }
-  }
+}

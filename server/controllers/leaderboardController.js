@@ -1,35 +1,82 @@
 import User from "../models/userModel.js";
 import Answer from "../models/answerModel.js";
 import Category from "../models/categoryModel.js";
+import mongoose from "mongoose";
 
-const getLeaderBoard = async (req, res, next) => {
+const getLeaderBoardV2 = async (req, res, next) => {
   try {
-    const categories = await Category.find();
-    const leaderBoard = {};
+    const { categoryId } = req.query;
 
-    for (const category of categories) {
-      const users = await User.find({ role: "user" }).sort({
-        correctAnswers: -1,
-      });
+    let leaderboard;
 
-      const categoryLeaderBoard = {};
-
-      for (const user of users) {
-        const userAnswers = await Answer.find({
-          user: user._id,
-          category: category._id,
-        });
-        categoryLeaderBoard[user.name] = userAnswers.length;
+    if (categoryId) {
+      if (!mongoose.isValidObjectId(categoryId)) {
+        return res.status(400).send("Invalid category ID");
       }
 
-      leaderBoard[category.name] = categoryLeaderBoard;
+      const objectId = new mongoose.Types.ObjectId(categoryId);
+
+      const categoryExists = await Category.findById(objectId);
+      if (!categoryExists) {
+        return res.status(404).send("Category not found");
+      }
+
+      leaderboard = await Answer.aggregate([
+        {
+          $match: {
+            category: objectId,
+            isCorrect: true,
+          },
+        },
+        {
+          $lookup: {
+            from: User.collection.name,
+            localField: "user",
+            foreignField: "_id",
+            as: "userDetails",
+          },
+        },
+        { $unwind: "$userDetails" },
+        {
+          $group: {
+            _id: "$userDetails.name",
+            correctAnswersCount: { $sum: 1 },
+          },
+        },
+        { $sort: { correctAnswersCount: -1 } },
+      ]);
+    } else {
+      // General leaderboard for all categories
+      leaderboard = await Answer.aggregate([
+        {
+          $match: {
+            isCorrect: true,
+          },
+        },
+        {
+          $lookup: {
+            from: User.collection.name,
+            localField: "user",
+            foreignField: "_id",
+            as: "userDetails",
+          },
+        },
+        { $unwind: "$userDetails" },
+        {
+          $group: {
+            _id: "$userDetails.name",
+            correctAnswersCount: { $sum: 1 },
+          },
+        },
+        { $sort: { correctAnswersCount: -1 } },
+      ]);
     }
 
-    res.status(200).json({ categories: leaderBoard });
+    res.json(leaderboard);
   } catch (error) {
-    console.error("Error fetching leaderboard:", error.message);
-    next(error);
+    console.error("Error in getLeaderBoardV2:", error);
+    res.status(500).send("Internal Server Error");
   }
 };
 
-export default getLeaderBoard;
+export { getLeaderBoardV2 };
