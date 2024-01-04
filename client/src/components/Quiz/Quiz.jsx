@@ -41,6 +41,7 @@ const Quiz = ({ user }) => {
         userId: user._id,
         categoryName: category,
         answerText: answer,
+        isCorrect: answer == correctAnswer ? true : false
       })
       .catch((error) => {
         console.log(error);

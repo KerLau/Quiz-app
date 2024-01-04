@@ -3,13 +3,14 @@ import Category from "../models/categoryModel.js";
 
 const createAnswer = async (req, res, next) => {
   try {
-    const { userId, categoryName, answerText } = req.body;
+    const { userId, categoryName, answerText, isCorrect } = req.body;
     const category = await Category.findOne({ name: categoryName }).exec();
 
     const newAnswer = new Answer({
       user: userId,
       category: category._id,
       answerText,
+      isCorrect,
     });
     const savedAnswer = await newAnswer.save();
     res.status(201).json({
@@ -21,5 +22,4 @@ const createAnswer = async (req, res, next) => {
     next(error);
   }
 };
-
 export default createAnswer;

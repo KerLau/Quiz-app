@@ -1,9 +1,7 @@
 import mongoose from "mongoose";
 import User from "./userModel.js";
 import Category from "./categoryModel.js";
-
 const Schema = mongoose.Schema;
-
 const answerSchema = new Schema(
   {
     user: {
@@ -20,10 +18,12 @@ const answerSchema = new Schema(
       type: String,
       required: true,
     },
+    isCorrect: {
+      type: Boolean,
+      required: true,
+    },
   },
   { timestamps: true }
 );
-
 const Answer = mongoose.model("Answer", answerSchema);
-
 export default Answer;
