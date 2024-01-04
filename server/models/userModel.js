@@ -33,8 +33,8 @@ const userSchema = mongoose.Schema(
       enum: ["user", "admin"],
       default: "user",
     },
-    correctAnswers: {
-      type: Number,
+    answer: {
+      type: Array,
       default: 0,
     },
   },

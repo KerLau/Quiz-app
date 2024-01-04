@@ -1,101 +1,73 @@
 // Leaderboard.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import "./Leaderboard.css"; // Import the CSS file for styling
 const Leaderboard = () => {
-  const [leaderboardData, setLeaderboardData] = useState({});
+  const [leaderboardData, setLeaderboardData] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
-
+  useEffect(() => {
+    // Fetch categories from the backend
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/categories");
+        setCategories(response.data.categories || []);
+      } catch (error) {
+        console.error("Error fetching categories:", error.message);
+      }
+    };
+    fetchCategories();
+  }, []);
   useEffect(() => {
     // Fetch leaderboard data from the backend
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/leaderboard");
-        setLeaderboardData(response.data.categories);
+        const url = `http://localhost:3000/leaderboard${
+          selectedCategory ? `?categoryId=${selectedCategory}` : ""
+        }`;
+        const response = await axios.get(url);
+        setLeaderboardData(response.data); // Adjust according to the response structure
       } catch (error) {
         console.error("Error fetching leaderboard data:", error.message);
       }
     };
-
     fetchData();
-  }, []);
-
-  // Assume this function is called when a user attempts a question
-  const handleQuizAttempt = async (user, category, isCorrect) => {
-    try {
-      // Fetch the current leaderboard data
-      const response = await axios.get("http://localhost:3000/leaderboard");
-      const updatedLeaderboardData = { ...response.data.categories };
-
-      // Update the user's data
-      if (!updatedLeaderboardData[category][user]) {
-        updatedLeaderboardData[category][user] = {
-          attempts: 0,
-          correctAnswers: 0,
-        };
-      }
-
-      updatedLeaderboardData[category][user].attempts += 1;
-      if (isCorrect) {
-        updatedLeaderboardData[category][user].correctAnswers += 1;
-      }
-
-      // Send the updated data to the backend
-      await axios.post("http://localhost:3000/updateLeaderboard", {
-        categories: updatedLeaderboardData,
-      });
-
-      // Refresh the leaderboard display
-      setLeaderboardData(updatedLeaderboardData);
-    } catch (error) {
-      console.error("Error updating leaderboard data:", error.message);
-    }
+  }, [selectedCategory]);
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
   };
-
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-  };
-
   return (
     <div className="leaderboard-container">
-      {/* Dropdown to select category */}
-      <select
-        value={selectedCategory}
-        onChange={(e) => handleCategoryChange(e.target.value)}
-      >
-        <option value="">All Categories</option>
-        {Object.keys(leaderboardData).map((category) => (
-          <option key={category} value={category}>
-            {category}
-          </option>
-        ))}
-      </select>
-
+      <div className="leaderboard-header">Leaderboard</div>
+      <div className="leaderboard-select">
+        {/* Dropdown to select category */}
+        <select value={selectedCategory} onChange={handleCategoryChange}>
+          <option value="">All Categories</option>
+          {categories.map((category) => (
+            <option key={category._id} value={category._id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
+      </div>
       {/* Leaderboard table */}
       <table className="leaderboard-content">
         <thead>
           <tr>
             <th>User</th>
-            <th>Attempts</th>
-            <th>Correct Answers</th>
+            <th>Correct Answers Count</th>
           </tr>
         </thead>
         <tbody>
-          {selectedCategory
-            ? Object.entries(leaderboardData[selectedCategory]).map(
-                ([user, userData]) => (
-                  <tr key={user} className="leaderboard-entry">
-                    <td>{user}</td>
-                    <td>{userData}</td>
-                    <td>{userData.correctAnswers}</td>
-                  </tr>
-                )
-              )
-            : null}
+          {leaderboardData.map(({ _id, correctAnswersCount }) => (
+            <tr key={_id}>
+              <td>{_id}</td>
+              <td>{correctAnswersCount}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
   );
 };
-
 export default Leaderboard;

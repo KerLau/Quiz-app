@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import "./Quiz.css";
-
 const Quiz = ({ user }) => {
   const { category } = useParams();
   const navigate = useNavigate();
@@ -11,7 +10,6 @@ const Quiz = ({ user }) => {
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [correctAnswer, setCorrectAnswer] = useState("");
   const [hasAnswered, setHasAnswered] = useState(false);
-
   useEffect(() => {
     fetchQuestion();
   }, []);
@@ -33,35 +31,27 @@ const Quiz = ({ user }) => {
       console.error("Error fetching question:", error);
     }
   };
-
   const handleAnswerSelect = async (answer) => {
-    if (answer === correctAnswer) {
-      setSelectedAnswer(answer);
-      setHasAnswered(true);
-    } else {
-      setSelectedAnswer(answer);
-      setHasAnswered(true);
-    }
+    setSelectedAnswer(answer);
+    setHasAnswered(true);
+    console.log({ user });
     axios
       .post("http://localhost:3000/answers/", {
         userId: user._id,
         categoryName: category,
         answerText: answer,
-        correctAnswer: answer === correctAnswer,
+        isCorrect: answer == correctAnswer ? true : false,
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
   const handleNextQuestion = () => {
     fetchQuestion();
   };
-
   const handleBack = () => {
     navigate("/categories");
   };
-
   const getButtonClass = (answer) => {
     console.log("Correct:", correctAnswer);
     console.log("Selected:", selectedAnswer);
@@ -70,7 +60,6 @@ const Quiz = ({ user }) => {
     if (answer === selectedAnswer) return "answer-btn answer-btn-incorrect";
     return "answer-btn";
   };
-
   return (
     <div className="quiz-container">
       <div className="question">{question}</div>
@@ -102,5 +91,4 @@ const Quiz = ({ user }) => {
     </div>
   );
 };
-
 export default Quiz;
