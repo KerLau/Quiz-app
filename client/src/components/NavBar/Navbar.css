@@ -2,11 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #191717;
+  background-color: #0f0f23;
   color: white;
   /* padding: 0.1rem 1rem; */
 }
-
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
@@ -16,15 +15,12 @@
   margin-top: 0.5rem;
   margin-left: 1rem;
 }
-
 .logo-image {
   max-height: 60px;
 }
-
 .nav-links {
   margin-right: 3rem;
 }
-
 .nav-links .nav-button {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
@@ -37,58 +33,60 @@
   cursor: pointer;
   text-decoration: none;
 }
-
 .nav-links .nav-button:hover {
   background-color: #555;
 }
-
 .nav-links .categories-button {
   background-color: transparent;
   color: rgb(255, 255, 255);
   box-shadow: 0 0 3px rgb(230, 230, 7);
 }
-
 .nav-links .categories-button:hover {
   background-color: rgb(230, 230, 7);
   color: black;
   border: 2px solid black;
   border-radius: 8px;
 }
-
 .nav-links .signup-button {
   background-color: transparent;
   color: whitesmoke;
   box-shadow: 0 0 3px rgb(30, 144, 255);
 }
-
 .nav-links .signup-button:hover {
   background-color: rgb(30, 144, 255);
   color: whitesmoke;
   border: 2px solid black;
   border-radius: 8px;
 }
-
 .nav-links .login-button {
   background-color: transparent;
   color: whitesmoke;
   box-shadow: 0 0 3px rgb(34, 160, 5);
 }
-
 .nav-links .login-button:hover {
   background-color: rgb(34, 160, 5);
   color: whitesmoke;
   border: 2px solid black;
   border-radius: 8px;
 }
-
 .nav-links .signout-button {
   background-color: transparent;
   color: whitesmoke;
   box-shadow: 0 0 3px rgb(209, 2, 2);
 }
-
 .nav-links .signout-button:hover {
   background-color: rgb(209, 2, 2);
+  color: whitesmoke;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+.nav-links .leaderboard-button {
+  background-color: transparent;
+  color: whitesmoke;
+  box-shadow: 0 0 3px #00ffea;
+}
+.nav-links .leaderboard-button:hover {
+  background-color: #00ffea9e;
   color: whitesmoke;
   border: 2px solid black;
   border-radius: 8px;

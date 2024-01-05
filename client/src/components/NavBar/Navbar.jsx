@@ -4,25 +4,20 @@ import "./Navbar.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import logo from "../../assets/Home/logo.png";
-
 const Navbar = ({ authenticated, setAuthenticated, setUser }) => {
   const navigate = useNavigate();
-
   const logoutHandler = () => {
     // Clear user authentication state and local storage
     setAuthenticated(false);
     setUser(null);
     localStorage.removeItem("token");
-
     // Show success notification
     toast.success("Logged out successfully", {
       position: toast.POSITION.TOP_CENTER,
     });
-
     // Navigate to the homepage after logout
     navigate("/");
   };
-
   return (
     <>
       <nav className="navbar">
@@ -34,7 +29,9 @@ const Navbar = ({ authenticated, setAuthenticated, setUser }) => {
           {authenticated ? (
             // If the user is authenticated, show the "Log Out" button
             <>
-            <Link to="/leaderboard">Leaderboard</Link>
+              <Link to="/leaderboard" className="nav-button leaderboard-button">
+                Leaderboard
+              </Link>
               <button
                 className="nav-button signout-button"
                 onClick={logoutHandler}
@@ -58,5 +55,4 @@ const Navbar = ({ authenticated, setAuthenticated, setUser }) => {
     </>
   );
 };
-
 export default Navbar;
