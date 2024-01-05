@@ -46,11 +46,7 @@ const Leaderboard = () => {
         Leaderboard
       </div>
       <div className="leaderboard-select">
-        {/* Dropdown to select category */}
-        <select
-          value={selectedCategory}
-          onChange={handleCategoryChange}
-        >
+        <select value={selectedCategory} onChange={handleCategoryChange}>
           <option value="">All Categories</option>
           {categories.map((category) => (
             <option key={category._id} value={category._id}>
@@ -59,27 +55,23 @@ const Leaderboard = () => {
           ))}
         </select>
       </div>
-
-      {/* Leaderboard table */}
-      <table className="leaderboard-content">
-        <thead>
-          <tr>
-            <th>User</th>
-            <th>Correct Answers Count</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div className="leaderboard-content">
+        <div className="leaderboard-thead">
+          <div className="leaderboard-th">User</div>
+          <div className="leaderboard-th">Scores</div>
+        </div>
+        <div className="leaderboard-tbody">
           {leaderboardData.map(({ _id, correctAnswersCount }) => (
-            <tr key={_id}>
-              <td>{_id}</td>
-              <td>{correctAnswersCount}</td>
-            </tr>
+            <div className="leaderboard-tr" key={_id}>
+              <div className="leaderboard-td">{_id}</div>
+              <div className="leaderboard-td">{correctAnswersCount}</div>
+            </div>
           ))}
-        </tbody>
-      </table>
+        </div>
+      </div>
+
     </div>
   );
 };
 
 export default Leaderboard;
-

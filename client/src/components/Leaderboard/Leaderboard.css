@@ -1,139 +1,108 @@
-
 .leaderboard-container {
   font-family: 'Arial', sans-serif;
-  background-color: #545d6e; 
+  background: #0F0F23; /* Dark background */
   border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.7); /* Cyan glow */
   margin: 20px auto;
-  padding: 20px; /* Padding around content */
-  max-width: 100%; /* Full width on mobile */
+  padding: 20px;
+  max-width: 800px; /* Max width */
+  position: relative;
 }
 
-
 .leaderboard-header {
-  background-color: #625FF7; 
-  color: white;
+  color: #FFFFFF; /* Cyan text */
   text-align: center;
   padding: 20px;
-  font-size: 24px; 
+  font-size: 3rem; /* Large font size */
 }
 
 .leaderboard-select {
   padding: 10px;
-  background-color: rgb(214, 185, 185);
+  background-color: #0F0F23; /* Dark background for select */
+  color: #FFFFFF; /* White text */
+  margin-bottom: 1rem; /* Space below select */
 }
 
 .leaderboard-select select {
   width: 100%;
-  padding: 8px 10px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  font-size: 16px;
-}
-
-.leaderboard-content {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: rgb(199, 186, 186);
-  margin-top: 20px;
-}
-
-.leaderboard-content thead {
-  background-color: #786ae0; 
-  color: rgb(231, 160, 160);
-}
-
-.leaderboard-content thead th {
   padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #00FFEA; /* Cyan border */
+  background: #212244; /* Dark background for select */
+  color: white;
+  font-size: 16px; /* Font size */
+}
+
+/* Header of leaderboard (replace thead) */
+.leaderboard-thead {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+   margin-bottom: 10px;
+  background-color: #0F0F23; /* Dark background */
+  color: #FFFFFF; /* White text */
+  margin-top: 20px; /* Space from select */
+}
+
+/* Column headers (replace th) */
+.leaderboard-th {
+  font-weight: bold;
   text-align: left;
+  flex-basis: 50%; /* Each header takes half the width */
 }
 
-.leaderboard-content tbody tr {
-  border-bottom: 1px solid #332727;
+/* Body of leaderboard (replace tbody) */
+.leaderboard-tbody {
+  display: flex;
+  flex-direction: column;
 }
 
-.leaderboard-content tbody tr:last-child {
-  border-bottom: none;
+/* Each row in the leaderboard (replace tr) */
+.leaderboard-tr {
+  display: flex;
+  padding: 10px;
+  margin-bottom: 10px; /* Space between entries */
+  background-color: #2A2B48; /* Lighter background for entries */
+  color: #FFFFFF; /* White text */
+  border-radius: 10px; /* Rounded corners for card effect */
 }
 
-.leaderboard-content tbody td {
+/* Data within each row (replace td) */
+.leaderboard-td {
   text-align: left;
   padding: 10px;
-}
-
-.leaderboard-entry:nth-child(odd) {
-  background-color: #9696af; /* Zebra striping for rows */
+  flex-basis: 50%; /* Each cell takes half the width */
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  /* Tablet styles */
   .leaderboard-container {
-    max-width: 600px; /* Adjust width for tablets */
+    max-width: 90%; /* Full width on smaller tablets */
+    padding: 20px; /* Padding on smaller tablets */
   }
 
   .leaderboard-header {
-    font-size: 20px; /* Adjust font size for tablets */
-  }
-
-}
-
-@media (max-width: 1024px) {
-  /* Desktop styles */
-  .leaderboard-container {
-    max-width: 900px; /* Adjust width for desktops */
-  }
-
-  .leaderboard-header {
-    font-size: 24px; /* Adjust font size for desktops */
-  }
-
-
-}
-
-@media (max-width: 480px) {
-  /* Mobile styles */
-  .leaderboard-container {
-    max-width: 100%; /* Full width on smaller mobile devices */
-    margin: 10px; /* Adjust margin for mobile */
-    padding: 10px; /* Adjust padding for mobile */
-  }
-
-  .leaderboard-header {
-    padding: 15px; /* Adjust header padding for mobile */
-    font-size: 18px; /* Adjust header font size for mobile */
-  }
-
-  .leaderboard-content thead {
-    display: none; /* Hide table headers on mobile */
-  }
-
-  .leaderboard-content tbody td {
-    display: block; /* Block display for stacking */
-    text-align: right; /* Right align the text */
-    padding: 8px 4px; /* Adjust padding for mobile */
-  }
-
-  .leaderboard-content tbody td::before {
-    content: attr(data-label); /* Add content for data label */
-    float: left;
-    font-weight: bold;
-    color: #6c5ce7; /* Use the theme color */
-  }
-
-  .leaderboard-entry {
-    display: flex;
-    flex-direction: column; /* Stack children vertically */
-    padding: 10px; /* Adjust padding for mobile */
-  }
-
-  .leaderboard-entry:nth-child(odd) {
-    background-color: transparent; /* Remove striping on mobile */
+    font-size: 2rem; /* Smaller font size on tablets */
   }
 
   .leaderboard-select select {
-    padding: 8px; /* Adjust select padding for mobile */
-    font-size: 14px; /* Adjust font size for mobile */
+    font-size: 14px; /* Smaller font size on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .leaderboard-container {
+    max-width: 100%; /* Full width on mobile */
+    margin: 10px; /* Margin on mobile */
+    padding: 10px; /* Padding on mobile */
+  }
+
+  .leaderboard-header {
+    font-size: 1.5rem; /* Smaller font size on mobile */
+  }
+
+  .leaderboard-tr {
+    flex-direction: column; /* Stack the cells on mobile */
+    align-items: flex-start; /* Align to start on mobile */
   }
 }
