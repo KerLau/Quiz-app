@@ -3,6 +3,16 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+const shuffleArray = (array) => {
+  // Based on Fisher-Yates shuffle algorithm
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+};
+
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY2;
 const client = axios.create({
   baseURL: "https://api.openai.com/v1",
@@ -51,6 +61,7 @@ const parseResponseToObject = (response) => {
     .find((answer) => answer.includes("*"))
     .replace("*", "")
     .trim();
+  shuffleArray(answers);
   return {
     question: question.trim(),
     answers: answers.map((answer) => answer.replace("*", "").trim()),
