@@ -1,108 +1,120 @@
-.leaderboard-container {
+
+body {
   font-family: 'Arial', sans-serif;
-  background: #0F0F23; /* Dark background */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.leaderboard-container {
+  background: #0F0F23;
   border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.7); /* Cyan glow */
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
   margin: 20px auto;
   padding: 20px;
-  max-width: 800px; /* Max width */
+  max-width: 800px;
   position: relative;
 }
 
 .leaderboard-header {
-  color: #FFFFFF; /* Cyan text */
+  color: #FFFFFF;
   text-align: center;
   padding: 20px;
-  font-size: 3rem; /* Large font size */
+  font-size: 3rem;
 }
 
 .leaderboard-select {
   padding: 10px;
-  background-color: #0F0F23; /* Dark background for select */
-  color: #FFFFFF; /* White text */
-  margin-bottom: 1rem; /* Space below select */
+  background-color: #0F0F23;
+  color: #FFFFFF;
+  margin-bottom: 1rem;
 }
 
 .leaderboard-select select {
   width: 100%;
   padding: 10px;
   border-radius: 10px;
-  border: 1px solid #00FFEA; /* Cyan border */
-  background: #212244; /* Dark background for select */
+  border: 1px solid #00FFEA;
+  background: #212244;
   color: white;
-  font-size: 16px; /* Font size */
+  font-size: 16px;
 }
 
-/* Header of leaderboard (replace thead) */
 .leaderboard-thead {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-   margin-bottom: 10px;
-  background-color: #0F0F23; /* Dark background */
-  color: #FFFFFF; /* White text */
-  margin-top: 20px; /* Space from select */
+  margin-bottom: 10px;
+  background-color: #0F0F23;
+  color: #FFFFFF;
+  margin-top: 20px;
 }
 
-/* Column headers (replace th) */
 .leaderboard-th {
   font-weight: bold;
   text-align: left;
-  flex-basis: 50%; /* Each header takes half the width */
+  flex-basis: 50%;
 }
 
-/* Body of leaderboard (replace tbody) */
 .leaderboard-tbody {
   display: flex;
   flex-direction: column;
 }
 
-/* Each row in the leaderboard (replace tr) */
 .leaderboard-tr {
   display: flex;
   padding: 10px;
-  margin-bottom: 10px; /* Space between entries */
-  background-color: #2A2B48; /* Lighter background for entries */
-  color: #FFFFFF; /* White text */
-  border-radius: 10px; /* Rounded corners for card effect */
+  margin-bottom: 10px;
+  background-color: #2A2B48;
+  color: #FFFFFF;
+  border-radius: 10px;
 }
 
-/* Data within each row (replace td) */
 .leaderboard-td {
   text-align: left;
   padding: 10px;
-  flex-basis: 50%; /* Each cell takes half the width */
+  flex-basis: 50%;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .leaderboard-container {
-    max-width: 90%; /* Full width on smaller tablets */
-    padding: 20px; /* Padding on smaller tablets */
+    max-width: 90%;
+    padding: 15px;
   }
 
   .leaderboard-header {
-    font-size: 2rem; /* Smaller font size on tablets */
+    font-size: 2.5rem;
+    padding: 15px 0;
+  }
+
+  .leaderboard-select {
+    padding: 5px;
   }
 
   .leaderboard-select select {
-    font-size: 14px; /* Smaller font size on tablets */
+    font-size: 14px;
   }
 }
 
 @media (max-width: 480px) {
   .leaderboard-container {
-    max-width: 100%; /* Full width on mobile */
-    margin: 10px; /* Margin on mobile */
-    padding: 10px; /* Padding on mobile */
+    max-width: 100%;
+    margin: 10px;
+    padding: 10px;
   }
 
   .leaderboard-header {
-    font-size: 1.5rem; /* Smaller font size on mobile */
+    font-size: 1.8rem;
+    padding: 10px 0;
   }
 
-  .leaderboard-tr {
-    flex-direction: column; /* Stack the cells on mobile */
-    align-items: flex-start; /* Align to start on mobile */
+  .leaderboard-select {
+    padding: 5px;
+  }
+
+  .leaderboard-select select {
+    font-size: 12px;
   }
 }
+
