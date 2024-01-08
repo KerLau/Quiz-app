@@ -83,3 +83,17 @@
   background-color: #2A2B48;
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
 }
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-message {
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.loading-spinner {
+  margin-bottom: 15px;
+}
