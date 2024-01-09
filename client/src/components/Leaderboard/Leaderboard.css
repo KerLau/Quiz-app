@@ -17,10 +17,13 @@ body {
 }
 
 .leaderboard-header {
-  color: #FFFFFF;
-  text-align: center;
-  padding: 20px;
-  font-size: 3rem;
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    font-size: 2em;
+    font-size: 70px;
+    margin-bottom: 50px;
+    margin-top: 50px;
 }
 
 .leaderboard-select {
