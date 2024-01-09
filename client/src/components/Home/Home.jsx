@@ -9,7 +9,7 @@ const Home = ({ user }) => {
       <div className="title-section">
         {user && <h1>Welcome, {user.name}!</h1>}
         <h1>Synapster</h1>
-        <h2>AI generated quiz app</h2>
+        <h2>AI generated Quiz App</h2>
         <p>
           Introducing our AI Quiz App, crafted by a dynamic team of three
           full-stack web developers. Elevate your knowledge with a seamless
