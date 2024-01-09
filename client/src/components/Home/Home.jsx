@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.css";
-import bridge from "../../assets/Home/bridge.jpg";
+import quiz from '../../assets/Home/quiz.png'
 import { Link } from "react-router-dom";
 
 const Home = ({ user }) => {
@@ -23,7 +23,7 @@ const Home = ({ user }) => {
           </Link>
         )}
       </div>
-      <img className="bridge" src={bridge} alt="Bridge" />
+      <img className="quiz" src={quiz} alt="Quiz" />
     </div>
   );
 };
