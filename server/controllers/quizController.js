@@ -3,16 +3,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const shuffleArray = (array) => {
-  // Based on Fisher-Yates shuffle algorithm
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
-};
-
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY2;
 const client = axios.create({
   baseURL: "https://api.openai.com/v1",
@@ -23,57 +13,35 @@ const client = axios.create({
 });
 
 // Function to send a message to OpenAI API and get a trivia question
-const getTriviaQuestionFromOpenAI = async (category) => {
-  const prompt = `Create a trivia question about ${category} with four multiple-choice answers. Make sure that one answer is 100% true. Ask unique questions and always different ones. Indicate the correct answer with an asterisk.`;
-  const fetchQuestions = async () => {
-    const response = await client.post(
-      "/engines/text-davinci-003/completions",
-      {
-        // Updated to the correct model
-        prompt,
-        max_tokens: 100,
-        temperature: 0.5,
-      }
-    );
-    if (response.data.choices[0].text.split("\n").length > 4) {
-      return response.data.choices[0].text;
-    } else {
-      await fetchQuestions();
+const fetchQuestions = (category) => {
+  const prompt = `
+    Create a quiz question for a JavaScript quiz application. 
+    The category is ${category}. 
+    The question should be fact-based and have four answers.
+    Include one correct answer and mark it in the 'correctAnswer' field.
+    Format the response as a valid JSON object with the following structure:
+    {
+      "question": "Question here",
+      "answers": ["A: ...", "B: ...", "C: ...", "D: ..."],
+      "correctAnswer": ""
     }
-  };
-  try {
-    return await fetchQuestions();
-  } catch (error) {
-    console.log("Error getting trivia question: ", error);
-    console.error(
-      "Error sending message to OpenAI API:",
-      error.response?.data || error.message
-    );
-    throw error;
-  }
-};
-
-const parseResponseToObject = (response) => {
-  const [question, ...answers] = response
-    .split("\n")
-    .filter((line) => line.trim() !== "");
-  const correctAnswer = answers
-    .find((answer) => answer.includes("*"))
-    .replace("*", "")
-    .trim();
-  shuffleArray(answers);
-  return {
-    question: question.trim(),
-    answers: answers.map((answer) => answer.replace("*", "").trim()),
-    correctAnswer,
-  };
+  `;
+  return client
+    .post("/engines/gpt-3.5-turbo-instruct/completions", {
+      // Updated to the correct model
+      prompt,
+      max_tokens: 100,
+      temperature: 0.5,
+    })
+    .then((resp) => resp.data.choices[0].text.trim())
+    .catch((error) => console.log(error));
 };
 
 export const getQuizQuestion = async (req, res) => {
   const { category } = req.params;
   try {
-    const data = await getTriviaQuestionFromOpenAI(category);
-    const parsedData = parseResponseToObject(data);
+    const data = await fetchQuestions(category);
+    const parsedData = JSON.parse(data);
     res.json(parsedData);
   } catch (error) {
     console.log(error);
