@@ -10,10 +10,13 @@
 }
 
 .leaderboard-header {
-  color: #FFFFFF; /* Cyan text */
-  text-align: center;
-  padding: 20px;
-  font-size: 3rem; /* Large font size */
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    font-size: 2em;
+    font-size: 70px;
+    margin-bottom: 50px;
+    margin-top: 50px;
 }
 
 .leaderboard-select {
