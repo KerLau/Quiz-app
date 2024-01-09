@@ -67,7 +67,7 @@ body, html {
   padding: 15px 30px;
   margin-top: 15px;
   margin: 20px 0;
-  border: none;
+  border: 2.5px solid rgb(209, 2, 2);
   border-radius: 8px;
   font-size: 1.5em;
   cursor: pointer;
