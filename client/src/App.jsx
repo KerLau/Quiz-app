@@ -8,7 +8,8 @@ import Register from "./components/Register/Register";
 import Navbar from "./components/NavBar/Navbar";
 import Categories from "./components/Categories/Categories";
 import Quiz from "./components/Quiz/Quiz";
-import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary"; // Import the ErrorBoundary component
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import Footer from "./components/Footer/Footer"; 
 import "./App.css";
 import Leaderboard from "./components/Leaderboard/Leaderboard";
 
@@ -24,16 +25,17 @@ function App() {
         setUser={setUser}
         user={user}
       />
-      <ErrorBoundary> 
+      <ErrorBoundary>
         <Routes>
           <Route path="/" element={<Home user={user} />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/login" element={<Login setAuthenticated={setAuthenticated} setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/quiz/:category" element={<Quiz user={user} />} /> {/* Assuming Quiz component expects a category param */}
+          <Route path="/quiz/:category" element={<Quiz user={user} />} />
           <Route path="/leaderboard" element={<Leaderboard/>} />
         </Routes>
       </ErrorBoundary>
+      <Footer/>
     </Router>
   );
 }
