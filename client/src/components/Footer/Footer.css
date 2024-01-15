@@ -1,0 +1,21 @@
+/* Footer.css */
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f0f23;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.footer p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+  }
+}

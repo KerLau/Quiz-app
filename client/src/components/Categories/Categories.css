@@ -1,9 +1,13 @@
+/* Categories.css */
+
 .categories-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh; 
   padding: 20px;
 }
+
 .categories-title {
   color: white;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
@@ -12,12 +16,14 @@
   margin-bottom: 50px;
   margin-top: 50px;
 }
+
 .categories-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
 }
+
 .category-card {
   background: #0f0f23;
   margin: 10px;
@@ -29,21 +35,28 @@
   transition: transform 0.3s, box-shadow 0.3s;
   box-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
   flex: 1;
-  max-width: 400px; /* Set a maximum width for the cards */
+  max-width: 400px;
 }
+
 .category-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
 }
+
 /* Media query for larger screens */
 @media screen and (min-width: 300px) {
   .category-card {
-    flex: 0 1 calc(50% - 20px); /* Two cards in a row, considering gap */
+    flex: 0 1 calc(50% - 20px); 
   }
 }
+
 /* Media query for even larger screens */
 @media screen and (min-width: 1200px) {
   .category-card {
-    flex: 0 1 calc(33.33% - 20px); /* Three cards in a row, considering gap */
+    flex: 0 1 calc(33.33% - 20px); 
   }
+}
+
+.footer {
+  margin-top: auto;
 }
