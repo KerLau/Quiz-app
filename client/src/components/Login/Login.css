@@ -18,6 +18,7 @@
   width: 500px;
   box-shadow: 0 4px 8px rgba(162, 162, 162, 0.1);
   z-index: 1000;
+  position: relative;
 }
 
 .login-container h2 {

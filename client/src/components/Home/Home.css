@@ -13,6 +13,7 @@ body, html {
   background: url(../../assets/Home/new.png);
   background-size: cover;
   height: 100vh;
+  margin-bottom: 50px;
 }
 
 .title-section {

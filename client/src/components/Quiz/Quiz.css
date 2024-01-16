@@ -26,7 +26,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
-  z-index: 2;
+  z-index: 1;
 }
 .quiz-header {
   font-size: 3rem;

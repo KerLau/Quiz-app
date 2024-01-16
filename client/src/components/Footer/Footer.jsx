@@ -1,13 +1,10 @@
-// Footer.jsx
-
-import React from "react";
-import "./Footer.css";
+import React from 'react';
+import './Footer.css'; // Import the CSS file for styling
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <p>&copy; {new Date().getFullYear()} Synapster. All rights reserved.</p>
-      {/* Add additional footer content or links as needed */}
+    <footer className="footer-container">
+      <p>&copy; {new Date().getFullYear()} Synapster. All rights reserved</p>
     </footer>
   );
 };
