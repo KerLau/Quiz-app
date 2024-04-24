@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
-import ClipLoader from 'react-spinners/ClipLoader';
-import './Quiz.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
+import "./Quiz.css";
 
 const Quiz = ({ user }) => {
   const { category } = useParams();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  const [question, setQuestion] = useState('');
+  const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState([]);
-  const [selectedAnswer, setSelectedAnswer] = useState('');
-  const [correctAnswer, setCorrectAnswer] = useState('');
+  const [selectedAnswer, setSelectedAnswer] = useState("");
+  const [correctAnswer, setCorrectAnswer] = useState("");
   const [hasAnswered, setHasAnswered] = useState(false);
 
   useEffect(() => {
@@ -21,15 +21,15 @@ const Quiz = ({ user }) => {
   const fetchQuestion = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:3000/quiz/question/${category}`);
+      const response = await axios.get(`quiz/question/${category}`);
       const { question, answers, correctAnswer } = response.data;
       setQuestion(question);
       setAnswers(answers);
       setCorrectAnswer(correctAnswer);
-      setSelectedAnswer('');
+      setSelectedAnswer("");
       setHasAnswered(false);
     } catch (error) {
-      console.error('Error fetching question:', error);
+      console.error("Error fetching question:", error);
     } finally {
       setLoading(false);
     }
@@ -40,7 +40,7 @@ const Quiz = ({ user }) => {
     setHasAnswered(true);
     console.log({ user });
     axios
-      .post('http://localhost:3000/answers/', {
+      .post("answers/", {
         userId: user._id,
         categoryName: category,
         answerText: answer,
@@ -56,14 +56,14 @@ const Quiz = ({ user }) => {
   };
 
   const handleBack = () => {
-    navigate('/categories');
+    navigate("/categories");
   };
 
   const getButtonClass = (answer) => {
-    if (!hasAnswered) return 'answer-btn';
-    if (answer === correctAnswer) return 'answer-btn answer-btn-correct';
-    if (answer === selectedAnswer) return 'answer-btn answer-btn-incorrect';
-    return 'answer-btn';
+    if (!hasAnswered) return "answer-btn";
+    if (answer === correctAnswer) return "answer-btn answer-btn-correct";
+    if (answer === selectedAnswer) return "answer-btn answer-btn-incorrect";
+    return "answer-btn";
   };
 
   return (

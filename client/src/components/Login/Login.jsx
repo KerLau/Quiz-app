@@ -17,10 +17,7 @@ function Login({ setAuthenticated, setUser }) {
         email: email,
         password: password,
       };
-      const response = await axios.post(
-        "http://localhost:3000/user/login",
-        userCredentials
-      );
+      const response = await axios.post("user/login", userCredentials);
       console.log("Authentication successful:", response.data);
       setAuthenticated(true);
       setUser(response.data.user);

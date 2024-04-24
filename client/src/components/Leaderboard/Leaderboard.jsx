@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import './Leaderboard.css'; // Import the CSS file for styling
+import "./Leaderboard.css"; // Import the CSS file for styling
 
 const Leaderboard = () => {
   const [leaderboardData, setLeaderboardData] = useState([]);
@@ -11,7 +11,7 @@ const Leaderboard = () => {
     // Fetch categories from the backend
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/categories");
+        const response = await axios.get("categories");
         setCategories(response.data.categories || []);
       } catch (error) {
         console.error("Error fetching categories:", error.message);
@@ -25,7 +25,9 @@ const Leaderboard = () => {
     // Fetch leaderboard data from the backend
     const fetchData = async () => {
       try {
-        const url = `http://localhost:3000/leaderboard${selectedCategory ? `?categoryId=${selectedCategory}` : ''}`;
+        const url = `leaderboard${
+          selectedCategory ? `?categoryId=${selectedCategory}` : ""
+        }`;
         const response = await axios.get(url);
         setLeaderboardData(response.data); // Adjust according to the response structure
       } catch (error) {
@@ -42,9 +44,7 @@ const Leaderboard = () => {
 
   return (
     <div className="leaderboard-container">
-      <div className="leaderboard-header">
-        Leaderboard
-      </div>
+      <div className="leaderboard-header">Leaderboard</div>
       <div className="leaderboard-select">
         <select value={selectedCategory} onChange={handleCategoryChange}>
           <option value="">All Categories</option>
@@ -69,7 +69,6 @@ const Leaderboard = () => {
           ))}
         </div>
       </div>
-
     </div>
   );
 };

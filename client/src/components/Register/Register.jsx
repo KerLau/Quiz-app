@@ -15,18 +15,15 @@ function Register() {
       password: event.target["password"].value,
     };
     try {
-      const response = await axios.post(
-        "http://localhost:3000/user/signup",
-        user
-      );
+      const response = await axios.post("user/signup", user);
       if (response.data) {
         console.log("Registration successful:", response.data);
-        navigate('/');
+        navigate("/");
         setTimeout(() => {
           toast.success("Registration successful", {
             position: toast.POSITION.TOP_CENTER,
           });
-        },); // Delay is adjusted to ensure it fires after the redirect
+        }); // Delay is adjusted to ensure it fires after the redirect
       }
     } catch (err) {
       console.error("Registration failed:", err.response.data.message);
